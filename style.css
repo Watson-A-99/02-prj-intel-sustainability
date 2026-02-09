@@ -1,1 +1,153 @@
-/* Add your CSS here */
+/* Load custom Intel One fonts */
+@font-face {
+	font-family: "intelone-display-medium";
+	src: url("./Fonts/intelone-display-medium.woff2") format("woff2");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "intelone-text-regular";
+	src: url("./Fonts/intelone-text-regular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "intelone-text-medium";
+	src: url("./Fonts/intelone-text-medium.woff2") format("woff2");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "intelone-text-light-italic";
+	src: url("./Fonts/intelone-text-light-italic.woff2") format("woff2");
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* Simple reset for predictable spacing */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "intelone-text-regular", Arial, sans-serif;
+	background: #ffffff;
+	color: #000000;
+	line-height: 1.5;
+}
+
+header {
+	background: #0071c5;
+	color: #ffffff;
+	padding: 48px 20px;
+	text-align: center;
+}
+
+header img {
+	width: 160px;
+	max-width: 80%;
+	margin-bottom: 16px;
+}
+
+h1 {
+	font-family:"intelone-text-medium", Helvetica, Arial, sans-serif;
+	font-size: 2rem;
+	margin-bottom: 12px;
+}
+
+header p {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+/* Timeline layout */
+section {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 20px;
+	padding: 30px 20px 10px;
+	justify-content: center;
+}
+
+section > div {
+	background: #ffffff;
+	border: 2px solid #0071c5;
+	border-radius: 12px;
+	padding: 18px;
+	width: 260px;
+	min-height: 260px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+section > div:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+section > div h2 {
+	font-family: intel-one-display-medium, Arial, sans-serif;
+	color: #0071c5;
+	font-size: 1.4rem;
+	margin-bottom: 6px;
+	order: 1;
+}
+
+section > div h3 {
+	font-family: intel-one-display-medium, Arial, sans-serif;
+	font-size: 1.1rem;
+	margin-bottom: 10px;
+	order: 2;
+}
+
+/* Placeholder image slot */
+section > div::before {
+	content: "";
+	height: 110px;
+	border: 2px dashed #0071c5;
+	border-radius: 8px;
+	background: #ffffff;
+	margin-bottom: 12px;
+	order: 3;
+}
+
+/* Hide description until hover */
+section > div p {
+	font-size: 0.95rem;
+	opacity: 0;
+	max-height: 0;
+	transition: opacity 0.2s ease, max-height 0.2s ease;
+	order: 4;
+}
+
+section > div:hover p {
+	opacity: 1;
+	max-height: 200px;
+}
+
+/* Footer note under the timeline */
+body > p {
+	text-align: center;
+	padding: 10px 20px 30px;
+	color: #000000;
+}
+
+/* Mobile friendly sizing */
+@media (max-width: 600px) {
+	section > div {
+		width: 100%;
+	}
+}
