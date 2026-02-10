@@ -180,7 +180,7 @@ section > div:focus-visible {
 
 section > div h2 {
 	font-family: "intelone-display-medium", Arial, sans-serif;
-	color: #0071c5;
+	color: #2bbbf9;
 	font-size: 2.3rem;
 	margin-bottom: 10px;
 	order: 1;
@@ -305,12 +305,13 @@ body > p .mobile-only  { display: none; }
 		flex: none;
 		width: 100%;
 		height: auto;
-		min-height: 300px;
 		scroll-snap-align: none;
 	}
-	section > div h2 { font-size: 1.7rem; }
-	section > div h3 { font-size: 1.2rem; }
-	.image-frame { height: 190px; }
+	section > div h2 { font-size: 2.1rem; }
+	section > div h3 { font-size: 1.5rem; }
+	.image-frame {
+		height: 180px;
+	}
 	section > div p { font-size: 1rem; padding: 18px; }
 	h1 { font-size: 3rem; letter-spacing: -0.01em; }
 	header {padding: 50px 40px 60px;}
@@ -320,10 +321,11 @@ body > p .mobile-only  { display: none; }
 }
 
 @media (max-width: 480px) {
-	section > div { min-height: 260px; }
-	section > div h2 { font-size: 1.5rem; }
-	section > div h3 { font-size: 1.1rem; }
-	.image-frame { height: 160px; }
+	section > div h2 { font-size: 1.9rem; }
+	section > div h3 { font-size: 1.3rem; }
+	.image-frame {
+		height: 160px;
+	}
 	h1 { font-size: 2.2rem; }
 	header { padding: 40px 15px 50px; }
 	header p { font-size: 1rem; }
