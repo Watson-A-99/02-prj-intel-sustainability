@@ -162,17 +162,17 @@ section > div {
 section > div:hover {
 	transform: translateY(-8px) scale(1.02);
 	box-shadow:
-		-3px 7px 30px 2px rgba(0, 200, 255, 0.288),
-		3px -4px 30px 2px rgba(137, 84, 234, 0.692);
+		-3px 7px 30px 2px rgba(104, 252, 255, 0.724),
+		3px -4px 30px 2px rgb(75, 3, 210);
 }
 
 /* Make cards respond to Tab focus the same way as hover */
 section > div:focus-visible {
 	transform: translateY(-8px) scale(1.02);
 	box-shadow:
-		-3px 7px 30px 2px rgba(0, 200, 255, 0.288),
-		3px -4px 30px 2px rgba(137, 84, 234, 0.692);
-	outline: 2px solid #66b7ff;
+		-3px 7px 30px 3px rgba(0, 200, 255, 0.288),
+		3px -4px 30px 3px rgba(232, 165, 255, 0.879);
+	outline: 2px solid #a0e1f9f1;
 	outline-offset: 4px;
 	scroll-margin-left: 50px;
 	scroll-margin-right: 50px;
