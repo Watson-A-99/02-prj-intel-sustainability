@@ -41,79 +41,111 @@
 body {
 	font-family: "intelone-text-regular", Arial, sans-serif;
 	background: #010b14;
-	color: #000000;
+	color: #e6eef5;
 	line-height: 1.5;
 }
 
 header {
 	/* Radial gradient: bright center glow to darker edges */
-	background: radial-gradient(circle at center, #105586 0%, #0a3156 45%, #0b2034 75%,   #010b14 100%);
-  height: 33vh;
+	background: radial-gradient(circle at center, #1c6395 0%, #0b3258 45%, #0b2034 75%,   #010b14 100%);
+  height: auto;
 	color: #ffffff;
 	padding: 48px 20px;
 	text-align: center;
+  max-width: 100%;
+}
+
+header > div {
+	/* Keep all header text centered on every screen size */
+	max-width: 1000px;
+	margin: 0 auto;
 }
 
 header img {
-	width: 160px;
-	max-width: 80%;
-  margin-top: 1rem;
-	margin-bottom: 3rem;
+	max-width: 7rem;
+	margin: 1rem auto 3rem;
+	display: block;
 }
 
 h1 {
 	font-family:"intelone-text-medium", Helvetica, Arial, sans-serif;
-	font-size: 2.3rem;
-	margin-bottom: 2.7rem;
+	font-size: 3.7rem;
+	margin: 0 auto 2.7rem;
+	max-width: 100%;
 }
 
 header p {
-	max-width: 700px;
-  margin: 0 auto;
-  max-width: 700px;
-  font-size: 1.3rem;
+	max-width: 900px;
+  margin: 0 auto 3em;
+  font-size: 1.5rem;
 }
 
 /* Timeline layout */
 section {
 	display: flex;
 	flex-wrap: nowrap;
-	gap: 20px;
-	padding: 30px 20px 10px;
+	gap: 44px;
+	padding: 30px 40px 10px;
 	justify-content: flex-start;
 	/* Horizontal scrolling timeline */
 	overflow-x: auto;
 	scroll-snap-type: x mandatory;
-	scroll-padding: 20px;
+	scroll-padding: 40px;
+	margin-top: 3em;
+	/* Use padding instead of side margins to avoid clipping cards */
+	margin-inline: 0;
 }
 
 section > div {
-	background: #ffffff;
-	border: 2px solid #0071c5;
-	border-radius: 12px;
+	background: #11273d;
+	border: 1px solid #1c3b55;
+	border-radius: 6px;
 	padding: 18px;
 	/* Show 3 cards in the viewport (2 gaps of 20px) */
 	flex: 0 0 calc((100% - 40px) / 3);
 	min-width: 240px;
-	min-height: 260px;
+	/* Keep cards square by matching height to width */
+	aspect-ratio: 1 / 1;
 	display: flex;
 	flex-direction: column;
-	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
 	position: relative;
 	overflow: hidden;
 	/* Snap each card as you scroll */
 	scroll-snap-align: start;
 }
 
+section > div::after {
+	/* Soft glow underneath the card on hover */
+	content: "";
+	position: absolute;
+	left: 12px;
+	right: 12px;
+	bottom: -18px;
+	height: 34px;
+	background: linear-gradient(90deg, #3aa6ff, #7b3bff);
+	filter: blur(28px);
+	opacity: 0;
+	transition: opacity 0.25s ease;
+	pointer-events: none;
+}
+
 section > div:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+	transform: translateY(-6px) scale(1.04);
+	box-shadow:
+		0 16px 32px rgba(0, 0, 0, 0.5),
+		0 14px 40px rgba(58, 166, 255, 0.55),
+		0 22px 60px rgba(123, 59, 255, 0.5);
+}
+
+section > div:hover::after {
+	opacity: 1;
 }
 
 section > div h2 {
 	font-family: intel-one-display-medium, Arial, sans-serif;
-	color: #0071c5;
+	color: #6bb7ff;
 	font-size: 1.4rem;
 	margin-bottom: 6px;
 	order: 1;
@@ -122,44 +154,60 @@ section > div h2 {
 section > div h3 {
 	font-family: intel-one-display-medium, Arial, sans-serif;
 	font-size: 1.1rem;
+	color: #f3f8fc;
 	margin-bottom: 10px;
 	order: 2;
 }
 
-/* Placeholder image slot */
-section > div::before {
-	content: "";
+/* Card image slot */
+.card-image {
 	height: 110px;
-	border: 2px dashed #0071c5;
-	border-radius: 8px;
-	background: #ffffff;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 4px;
+	border: 1px solid #1c3b55;
 	margin-bottom: 12px;
 	order: 3;
 }
 
 /* Hide description until hover */
 section > div p {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 18px;
+	background: rgba(12, 24, 36, 0.7);
+	backdrop-filter: blur(6px);
 	font-size: 0.95rem;
+	color: #cfe1ef;
 	opacity: 0;
-	max-height: 0;
-	transition: opacity 0.2s ease, max-height 0.2s ease;
+	transform: scale(1);
+	transition: opacity 0.23s ease, transform 0.3s ease;
 	order: 4;
+	border-radius: 6px;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 
 section > div:hover p {
 	opacity: 1;
-	max-height: 200px;
+	transform: scale(1);
 }
 
 /* Footer note under the timeline */
 body > p {
 	text-align: center;
 	padding: 10px 20px 30px;
-	color: #000000;
+	color: #cfe1ef;
 }
 
 /* Mobile friendly sizing */
-@media (max-width: 600px) {
+@media (max-width: 100px) {
 	/* Stack cards and scroll vertically on phones */
 	section {
 		flex-direction: column;
@@ -170,6 +218,7 @@ body > p {
 
 	section > div {
 		width: 100%;
+		aspect-ratio: 1 / 1;
 		flex: 0 0 auto;
 		scroll-snap-align: start;
 	}
