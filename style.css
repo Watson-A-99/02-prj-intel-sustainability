@@ -46,8 +46,7 @@ body {
 
 header {
 	background: 
-		radial-gradient(ellipse at center top, rgba(26, 68, 113, 0.8) 0%, transparent 70%),
-		linear-gradient(135deg, #1a4471 0%, #0f2a4a 25%, #0a1d35 50%, #061423 75%, #0a1426 100%);
+		radial-gradient(ellipse at center top, rgb(0 32 67 / 80%) 0%, transparent 70%), linear-gradient(135deg, #14253e 0%, #264263 25%, #2c2e5b 50%, #0e1533 75%, #0a1426 100%);
 	height: auto;
 	color: #ffffff;
 	padding: 60px 40px 80px;
@@ -162,17 +161,17 @@ section > div {
 section > div:hover {
 	transform: translateY(-8px) scale(1.02);
 	box-shadow:
-		-3px 7px 30px 2px rgba(104, 252, 255, 0.724),
-		3px -4px 30px 2px rgb(75, 3, 210);
+		-3px 7px 15px 1px rgba(41, 145, 190, 0.379),
+		3px -4px 15px 1px rgba(84, 38, 171, 0.498);
 }
 
 /* Make cards respond to Tab focus the same way as hover */
 section > div:focus-visible {
 	transform: translateY(-8px) scale(1.02);
 	box-shadow:
-		-3px 7px 30px 3px rgba(0, 200, 255, 0.288),
-		3px -4px 30px 3px rgba(232, 165, 255, 0.879);
-	outline: 2px solid #a0e1f9f1;
+		-3px 7px 15px 1px rgba(0, 200, 255, 0.288),
+		3px -4px 15px 1px rgba(175, 113, 196, 0.381);
+	outline: 2px solid #a0e1f98a;
 	outline-offset: 4px;
 	scroll-margin-left: 50px;
 	scroll-margin-right: 50px;
