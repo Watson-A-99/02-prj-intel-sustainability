@@ -1,13 +1,9 @@
-/* Load custom Intel One fonts so we can use them in the page */
+/* Load custom Intel One fonts */
 @font-face {
-	/* Name we will reference in font-family */
 	font-family: "intelone-display-medium";
-	/* Where the font file is stored */
 	src: url("./Fonts/intelone-display-medium.woff2") format("woff2");
-	/* Weight and style that this font file represents */
 	font-weight: 500;
 	font-style: normal;
-	/* Show fallback text until the font is ready */
 	font-display: swap;
 }
 
@@ -35,38 +31,32 @@
 	font-display: swap;
 }
 
-/* Reset default browser spacing and sizing */
 * {
 	margin: 0;
 	padding: 0;
-	/* Make width/height include padding and border */
 	box-sizing: border-box;
 }
 
-/* Page-wide base styles */
 body {
 	font-family: "intelone-text-regular", Arial, sans-serif;
-	/* Dark background for the whole page */
 	background: #0a1426;
 	color: #e1ecf7;
 	line-height: 1.5;
 }
 
-/* Header area with layered gradients */
 header {
 	background: 
 		radial-gradient(ellipse at center top, rgba(26, 68, 113, 0.8) 0%, transparent 70%),
 		linear-gradient(135deg, #1a4471 0%, #0f2a4a 25%, #0a1d35 50%, #061423 75%, #0a1426 100%);
+	height: auto;
 	color: #ffffff;
-	/* Space around the header content */
 	padding: 60px 40px 80px;
 	text-align: center;
+	max-width: 100%;
 	position: relative;
-	/* Hide any decorative overflow */
 	overflow: hidden;
 }
 
-/* Decorative glow circles over the header background */
 header::before {
 	content: "";
 	position: absolute;
@@ -74,15 +64,13 @@ header::before {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: 
+	background:
 		radial-gradient(circle at 30% 20%, rgba(0, 113, 197, 0.1) 0%, transparent 50%),
 		radial-gradient(circle at 70% 80%, rgba(41, 132, 214, 0.08) 0%, transparent 50%);
 	opacity: 0.6;
-	/* Make sure this layer does not block clicks */
 	pointer-events: none;
 }
 
-/* Center the header content and keep it above the overlay */
 header > div {
 	max-width: 1000px;
 	margin: 0 auto;
@@ -90,129 +78,74 @@ header > div {
 	z-index: 1;
 }
 
-/* Intel logo image styling */
 header img {
 	max-width: 7rem;
 	margin: 1rem auto 3rem;
 	display: block;
-	/* Soft glow behind the logo */
 	filter: drop-shadow(0 4px 12px rgba(0, 113, 197, 0.3));
 }
 
-/* Main page title */
 h1 {
 	font-family: "intelone-text-medium", Helvetica, Arial, sans-serif;
 	font-size: 4.2rem;
 	margin: 0 auto 2rem;
+	max-width: 100%;
 	font-weight: 500;
 	letter-spacing: -0.02em;
-	/* Subtle shadow to lift text from background */
 	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Header intro text */
 header p {
 	max-width: 800px;
 	margin: 0 auto 2em;
 	font-size: 1.4rem;
 	line-height: 1.6;
 	color: rgba(255, 255, 255, 0.9);
+	font-weight: 400;
 }
 
-/* Timeline Wrapper: gives room for arrows and scroll area */
-.timeline-wrapper {
-	position: relative;
-	margin: 3em auto;
-	padding: 0 80px;
-}
-
-/* Navigation Arrows: left/right buttons for scrolling */
-.timeline-nav {
-	position: absolute;
-	top: 50%;
-	/* Center the arrows vertically */
-	transform: translateY(-50%);
-	z-index: 10;
-	background: linear-gradient(135deg, rgba(0, 113, 197, 0.9), rgba(41, 132, 214, 0.9));
-	border: 1px solid rgba(0, 200, 255, 0.5);
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	/* Smooth hover animation */
-	transition: all 0.3s ease;
-	box-shadow: 
-		0 4px 12px rgba(0, 113, 197, 0.4),
-		0 0 20px rgba(0, 200, 255, 0.3);
-}
-
-/* Brighter glow on hover */
-.timeline-nav:hover {
-	background: linear-gradient(135deg, rgba(0, 200, 255, 0.95), rgba(80, 120, 255, 0.95));
-	box-shadow: 
-		0 6px 20px rgba(0, 113, 197, 0.6),
-		0 0 30px rgba(0, 200, 255, 0.5);
-	transform: translateY(-50%) scale(1.1);
-}
-
-/* Place left arrow */
-.timeline-nav-left {
-	left: 10px;
-}
-
-/* Place right arrow */
-.timeline-nav-right {
-	right: 10px;
-}
-
-/* Size the arrow icons */
-.timeline-nav svg {
-	width: 24px;
-	height: 24px;
-	fill: white;
-}
-
-/* Scroll Container - handles horizontal scrolling */
-.timeline-scroll-container {
-	/* Allow horizontal scroll for the cards */
-	overflow-x: auto;
-	/* Hide scrollbars on most browsers */
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-	/* Smooth scroll for arrow clicks */
-	scroll-behavior: smooth;
-	max-width: 1360px;
-	margin: 0 auto;
-}
-
-/* Hide scrollbar in WebKit browsers */
-.timeline-scroll-container::-webkit-scrollbar {
-	display: none;
-}
-
-/* Timeline Section - holds the cards */
 section {
-	/* Lay out cards in a row */
 	display: flex;
+	flex-wrap: nowrap;
 	gap: 60px;
+	margin: 3em auto 0;
 	padding: 50px;
-	/* Width grows to fit all cards */
-	width: max-content;
-	/* Snap the scroll to each card */
+	max-width: 1360px;
+	width: 100%;
+	justify-content: flex-start;
+	overflow-x: auto;
+	scroll-behavior: smooth;
 	scroll-snap-type: x mandatory;
+	scroll-padding: 50px;
+	scrollbar-width: thin;
+	scrollbar-color: #1a3b5c #0a1426;
 }
 
-/* Card Styling */
+section::-webkit-scrollbar {
+	height: 8px;
+}
+
+section::-webkit-scrollbar-track {
+	background: #0a1426;
+	border-radius: 4px;
+}
+
+section::-webkit-scrollbar-thumb {
+	background: #1a3b5c;
+	border-radius: 4px;
+}
+
+section::-webkit-scrollbar-thumb:hover {
+	background: #2a4a6a;
+}
+
 section > div {
 	background: linear-gradient(135deg, #0f243c 0%, #0d1f35 100%);
 	border: 1px solid #1a3b5c;
 	padding: 28px;
-	width: 370px;
-	height: 370px;
-	/* Stack items vertically inside the card */
+	flex: 0 0 380px;
+	width: 380px;
+	height: 380px;
 	display: flex;
 	flex-direction: column;
 	box-shadow: 
@@ -221,50 +154,58 @@ section > div {
 		inset 0 1px 0 rgba(255, 255, 255, 0.05);
 	transition: transform 0.4s ease, box-shadow 0.4s ease;
 	position: relative;
-	/* Align cards to snap points */
+	overflow: hidden;
 	scroll-snap-align: start;
 }
 
-/* Lift card on hover */
+/* Custom hover glow */
 section > div:hover {
 	transform: translateY(-8px) scale(1.02);
 	box-shadow:
 		-3px 7px 30px 2px rgba(0, 200, 255, 0.288),
-		3px -9px 30px 2px rgba(141, 80, 255, 0.301);
+		3px -4px 30px 2px rgba(137, 84, 234, 0.692);
 }
 
-/* Card year text */
+/* Make cards respond to Tab focus the same way as hover */
+section > div:focus-visible {
+	transform: translateY(-8px) scale(1.02);
+	box-shadow:
+		-3px 7px 30px 2px rgba(0, 200, 255, 0.288),
+		3px -4px 30px 2px rgba(137, 84, 234, 0.692);
+	outline: 2px solid #66b7ff;
+	outline-offset: 4px;
+	scroll-margin-left: 50px;
+	scroll-margin-right: 50px;
+}
+
 section > div h2 {
 	font-family: "intelone-display-medium", Arial, sans-serif;
 	color: #0071c5;
-	font-size: 1.7rem;
+	font-size: 2.3rem;
 	margin-bottom: 10px;
+	order: 1;
 	font-weight: 500;
 }
 
-/* Card title text */
 section > div h3 {
 	font-family: "intelone-display-medium", Arial, sans-serif;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 	color: #f0f6fb;
 	margin-bottom: 16px;
+	order: 2;
 	font-weight: 500;
 }
 
-/* Image at the top of each card */
 .card-image {
-	height: 140px;
-	width: 100%;
-	/* Crop image to fill the box */
+	height: 200px;
+	scale: 100%;
 	object-fit: cover;
-	border-radius: 6px;
 	border: 1px solid #1a3b5c;
-	margin-bottom: 18px;
+	margin-bottom: 2px;
+	order: 3;
 }
 
-/* Description overlay - hidden until hover */
 section > div p {
-	/* Overlay sits on top of the card */
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -272,14 +213,14 @@ section > div p {
 	height: 100%;
 	padding: 24px;
 	background: rgba(10, 20, 38, 0.92);
-	/* Soft blur on supported browsers */
 	backdrop-filter: blur(8px);
 	font-size: 1.1rem;
 	color: #d6e7f5;
-	/* Start hidden */
 	opacity: 0;
 	transition: opacity 0.3s ease;
-	border-radius: 3px;
+	order: 4;
+	border-radius: 8px;
+	z-index: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -287,12 +228,15 @@ section > div p {
 	line-height: 1.5;
 }
 
-/* Show description on hover */
 section > div:hover p {
 	opacity: 1;
 }
 
-/* Footer text under the timeline */
+/* Reveal description with keyboard focus */
+section > div:focus-within p {
+	opacity: 1;
+}
+
 body > p {
 	text-align: center;
 	padding: 15px 20px 40px;
@@ -300,243 +244,79 @@ body > p {
 	font-size: 1.1rem;
 }
 
-/* Footer text variants for desktop vs mobile */
-body > p .desktop-only {
-	display: inline;
-}
+body > p .desktop-only { display: inline; }
+body > p .mobile-only  { display: none; }
 
-body > p .mobile-only {
-	display: none;
-}
-
-/* Responsive Design: adjust layout for smaller screens */
+/* Responsive */
 @media (max-width: 1400px) {
-	/* Slightly tighter layout for large tablets/laptops */
-	.timeline-wrapper {
-		padding: 0 70px;
-	}
-	
-	.timeline-scroll-container {
-		max-width: 1200px;
-	}
-	
 	section {
+		max-width: 1200px;
 		padding: 40px;
 		gap: 50px;
 	}
-	
-	/* Smaller cards */
 	section > div {
+		flex: 0 0 340px;
 		width: 340px;
 		height: 340px;
 		padding: 22px;
 	}
-	
-	.card-image {
-		height: 120px;
-	}
+	.card-image { height: 150px; }
 }
 
 @media (max-width: 1200px) {
-	/* Even tighter layout for smaller laptops */
-	.timeline-wrapper {
-		padding: 0 60px;
-	}
-	
-	.timeline-scroll-container {
-		max-width: 1000px;
-	}
-	
 	section {
+		max-width: 1000px;
 		padding: 35px;
 		gap: 40px;
 	}
-	
 	section > div {
+		flex: 0 0 300px;
 		width: 300px;
 		height: 300px;
 		padding: 20px;
 	}
-	
-	/* Slightly smaller headings */
-	section > div h2 {
-		font-size: 1.5rem;
-	}
-	
-	section > div h3 {
-		font-size: 1.2rem;
-	}
-	
-	.card-image {
-		height: 110px;
-	}
-	
-	/* Smaller arrows */
-	.timeline-nav {
-		width: 45px;
-		height: 45px;
-	}
-	
-	.timeline-nav svg {
-		width: 20px;
-		height: 20px;
-	}
+	section > div h2 { font-size: 1.9rem; }
+	section > div h3 { font-size: 1.3rem; }
+	.card-image { height: 140px; }
 }
 
+/* Tablet and below: vertical stacking */
 @media (max-width: 768px) {
-	/* Tablet layout: stack cards vertically */
-	.timeline-wrapper {
-		padding: 0 20px;
-		margin: 2em auto;
-	}
-	
-	/* Hide arrows on tablet - vertical scroll */
-	.timeline-nav {
-		display: none;
-	}
-	
-	.timeline-scroll-container {
-		max-width: 100%;
-		overflow-x: visible;
-		overflow-y: visible;
-	}
-	
-	/* Vertical stacking on tablet */
 	section {
 		flex-direction: column;
-		padding: 0;
-		gap: 30px;
-		width: 100%;
+		overflow-x: visible;
 		scroll-snap-type: none;
+		max-width: 100%;
+		padding: 20px;
+		gap: 25px;
+		margin: 2em auto 0;
 	}
-	
 	section > div {
+		flex: none;
 		width: 100%;
 		height: auto;
 		min-height: 300px;
-		padding: 24px;
 		scroll-snap-align: none;
 	}
-	
-	section > div h2 {
-		font-size: 1.4rem;
-	}
-	
-	section > div h3 {
-		font-size: 1.1rem;
-	}
-	
-	.card-image {
-		height: 160px;
-	}
-	
-	section > div p {
-		font-size: 1rem;
-		padding: 18px;
-	}
-	
-	/* Smaller header text on tablet */
-	h1 {
-		font-size: 3rem;
-		letter-spacing: -0.01em;
-	}
-	
-	header {
-		padding: 50px 20px 60px;
-	}
-	
-	header p {
-		font-size: 1.2rem;
-		max-width: 600px;
-	}
-	
-	/* Swap footer text */
-	body > p .desktop-only {
-		display: none;
-	}
-	
-	body > p .mobile-only {
-		display: inline;
-	}
+	section > div h2 { font-size: 1.7rem; }
+	section > div h3 { font-size: 1.2rem; }
+	.card-image { height: 190px; }
+	section > div p { font-size: 1rem; padding: 18px; }
+	h1 { font-size: 3rem; letter-spacing: -0.01em; }
+	header {padding: 50px 40px 60px;}
+	header p { font-size: 1.2rem; max-width: 600px; }
+	body > p .desktop-only { display: none; }
+	body > p .mobile-only  { display: inline; }
 }
 
 @media (max-width: 480px) {
-	/* Phone layout: tighter spacing and smaller text */
-	.timeline-wrapper {
-		padding: 0 20px;
-		margin: 2em auto;
-	}
-	
-	/* Hide arrows on mobile - vertical scroll doesn't need them */
-	.timeline-nav {
-		display: none;
-	}
-	
-	.timeline-scroll-container {
-		max-width: 100%;
-		overflow-x: visible; /* No horizontal scroll */
-		overflow-y: visible; /* Let body handle vertical scroll */
-	}
-	
-	/* Vertical stacking on mobile */
-	section {
-		flex-direction: column;
-		padding: 0;
-		gap: 25px;
-		width: 100%;
-		scroll-snap-type: none; /* No snap on vertical scroll */
-	}
-	
-	section > div {
-		width: 100%;
-		height: auto;
-		min-height: 280px;
-		padding: 20px;
-		scroll-snap-align: none;
-	}
-	
-	section > div h2 {
-		font-size: 1.3rem;
-		margin-bottom: 8px;
-	}
-	
-	section > div h3 {
-		font-size: 1rem;
-		margin-bottom: 12px;
-	}
-	
-	.card-image {
-		height: 140px;
-		margin-bottom: 14px;
-	}
-	
-	section > div p {
-		font-size: 0.95rem;
-		padding: 16px;
-	}
-	
-	/* Smallest header sizing */
-	h1 {
-		font-size: 2.2rem;
-		letter-spacing: 0;
-	}
-	
-	header {
-		padding: 40px 15px 50px;
-	}
-	
-	header p {
-		font-size: 1rem;
-		max-width: 400px;
-		line-height: 1.5;
-	}
-	
-	/* Swap footer text */
-	body > p .desktop-only {
-		display: none;
-	}
-	
-	body > p .mobile-only {
-		display: inline;
-	}
+	section > div { min-height: 260px; }
+	section > div h2 { font-size: 1.5rem; }
+	section > div h3 { font-size: 1.1rem; }
+	.card-image { height: 160px; }
+	h1 { font-size: 2.2rem; }
+	header { padding: 40px 15px 50px; }
+	header p { font-size: 1rem; }
+	body > p .desktop-only { display: none; }
+	body > p .mobile-only  { display: inline; }
 }
